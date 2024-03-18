@@ -6,7 +6,9 @@ from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
+from sqlalchemy import create_engine
 
+# engine = create_engine('sqlite:///wordsBase.sqlite', echo=True)
 class Base(DeclarativeBase):
      pass
 
@@ -27,3 +29,13 @@ class Word(Base):
     category: Mapped["Category"] = relationship(back_populates="words", cascade="all")
     def __repr__(self) -> str:
         return f"Word(id={self.id!r}, word={self.word!r}), categotyId={self.categoryId!r}, category={self.category!r}"
+
+class Player(Base):
+    __tablename__ = "players"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(20))
+    scores: Mapped[int] = mapped_column()
+    def __repr__(self) -> str:
+        return f"Player(id={self.id!r}, name={self.name!r}, scores={self.scores!r})"
+
+# Base.metadata.create_all(engine)
