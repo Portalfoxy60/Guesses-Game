@@ -22,17 +22,15 @@ my_screen.show_main_screen()
 done = True
 while done :
   events = pygame.event.get()
-  for i in events:
-  
-    if i.type == pygame.QUIT:
+  my_screen.check_score()
+  for event in events:
+    if event.type == pygame.QUIT:
       done = False
-    elif i.type == pygame.KEYDOWN:
-      if i.key == pygame.K_ESCAPE:
+    elif event.type == pygame.KEYDOWN:
+      if event.key == pygame.K_ESCAPE:
         done = False
     for n in my_screen.button_massive:
-      n.listen(i)
-
-  # screen.fill(background)
+      n.listen(event)
   pygame_widgets.update(events)
   pygame.display.update()
   clock.tick(FPS)
