@@ -291,7 +291,7 @@ class ScreenShower:
             self.textbox.hide()
         self.screen.fill((255,0,0))
         title_font = pygame.font.SysFont("sans-serif", 120)
-        title_text = title_font.render("TIME IS OUT!", True,(0,0,0))
+        title_text = title_font.render("YOU ARE LOSE!", True,(0,0,0))
         self.screen.blit(title_text, (320, 100))
         self.pygame.display.flip()
     def check_score(self):
